@@ -1,14 +1,17 @@
 package pid7.yo;
 
 import pid7.yo.Solution;
+import pid7.yo.Solution2;
 import java.util.ArrayList;
 
 public class Main {
     public static void test(){
         int x = -325;
-        Solution solu = new Solution();
+        //Solution solu = new Solution();
+        Solution2 solu2 = new Solution2();
         long begin = System.currentTimeMillis();
-        int rst = solu.reverse(x);
+        //int rst = solu.reverse(x);
+        int rst = solu2.reverse(x);
         long end = System.currentTimeMillis();
 
         System.out.println( rst );
