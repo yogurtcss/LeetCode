@@ -8,7 +8,6 @@ package pid9.灵魂画师牧码;
 
 *  */
 
-
 class Solution {
     public boolean isPalindrome(int x) {
         if(x < 0)
