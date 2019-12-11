@@ -1,13 +1,16 @@
 package pid14.yo;
 
 import pid14.yo.Solution;
+import pid14.yo.Solution2;
 
 public class Main {
     public static void test(){
-        Solution solu = new Solution();
+        //Solution solu = new Solution();
+        Solution2 solu2 = new Solution2();
         String[] strs = { "" };
         long begin = System.currentTimeMillis();
-        String rst = solu.longestCommonPrefix(strs);
+        //String rst = solu.longestCommonPrefix(strs);
+        String rst = solu2.longestCommonPrefix(strs);
         long end = System.currentTimeMillis();
 
         System.out.println( rst );
