@@ -5,7 +5,7 @@ import pid20.yo.Solution2;
 
 public class Main {
     public static void test(){
-        String s = "()]";
+        String s = "([)";
         //Solution solu = new Solution();
         Solution2 solu2 = new Solution2();
         long begin = System.currentTimeMillis();
