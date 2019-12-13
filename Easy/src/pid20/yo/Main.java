@@ -1,13 +1,10 @@
 package pid20.yo;
 
-import pid20.yo.Solution;
-import pid20.yo.Solution2;
-
 public class Main {
     public static void test(){
         String s = "([)";
         //Solution solu = new Solution();
-        Solution2 solu2 = new Solution2();
+        Solution2_notFinished solu2 = new Solution2_notFinished();
         long begin = System.currentTimeMillis();
         boolean rst = solu2.isValid(s);
         long end = System.currentTimeMillis();
