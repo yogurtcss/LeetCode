@@ -3,7 +3,7 @@ package pid13.yo;
 public class Main {
 
     public static void test(){
-        Solution_notFinished solu = new Solution_notFinished();
+        Solution_unfinished solu = new Solution_unfinished();
         String strX = "MCMXCIV";
 
         long begin = System.currentTimeMillis();

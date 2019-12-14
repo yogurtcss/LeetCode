@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.ArrayList;
 
-public class Solution_notFinished {
+public class Solution_unfinished {
     public HashMap<String,Integer> getDictMap(){ //获取初始的映射表
         HashMap<String,Integer> strIntMap = new HashMap<>(); //键为罗马字符，值为整数
         //存入映射关系
