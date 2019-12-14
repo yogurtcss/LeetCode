@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 //使用StringBuilder 没有弹出栈的操作！
 
-public class Solution2_notFinished {
+public class Solution2_unfinished {
     public boolean isValid(String s){
         //构造括号的对应关系
         HashMap<Character, Character> map = new HashMap<>();
