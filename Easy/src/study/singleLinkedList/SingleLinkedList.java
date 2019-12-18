@@ -9,6 +9,8 @@ import study.singleLinkedList.Node;
 
 public class SingleLinkedList {
     public Node head; //头结点
+    // 规定：这里的头结点 就是 链表中的第一个元素
+
     /* 在大多数情况下，我们将使用头结点 (第一个结点) 来表示整个列表。
     * 头结点是为了操作的统一与方便而设立的，放在第一个元素结点之前，
     * 其数据域一般无意义（当然有些情况下也可存放链表的长度、用做监视哨等等）。
@@ -25,6 +27,8 @@ public class SingleLinkedList {
     *
     *  */
     public Node tail; //尾结点
+    // 规定：这里的尾结点 就是 链表中的最后一个元素
+
     public int size; //链表长度(链表中的元素个数)
 
     //无参构造方法
@@ -88,4 +92,96 @@ public class SingleLinkedList {
         this.size++;
     }
 
+    //在尾部添加
+    public void addAtTail(int val){
+        //如果在初始时的表为空
+        if( head==null ){
+            //即将成为尾结点 的新结点，值为新的val。但是它没有next，所以为null
+            Node newNode = new Node( val, null );
+            //头结点和尾结点都是 newNode
+            tail = newNode;
+            head = newNode;
+        }else{
+            //即将成为尾结点 的新结点，值为新的val。但是它没有next，所以为null
+            Node newNode = new Node( val, null );
+            tail.next = newNode; //更改next域：让原本的tail结点 不是尾结点——原tail的next是 newNode
+            tail = newNode; //正式更改尾结点
+        }
+
+        this.size++;
+    }
+
+    /* addAtIndex (index,val)：
+    * 在链表中的第 index 个节点之前添加值为 val 的节点。
+    * 如果 index 等于链表的长度，则该节点将附加到链表的末尾。
+    * 如果 index 大于链表长度，则不会插入节点。
+    * 如果 index 小于 0，则在头部插入节点。
+    *  */
+    public void addAtIndex(int index, int val) {
+        if( index==this.size ){ //如果 index 等于链表的长度，则该节点将附加到链表的末尾
+            this.addAtTail( val );
+        }else if( index>this.size ){
+            System.out.println( "index 大于链表长度，则不会插入结点嗷！" );
+        }else if( index<0 ){ // 如果 index 小于 0，则在头部插入节点。
+            this.addAtHead( val );
+        }else if( index>0 && index<=size-1 ){ //正常情况
+
+            Node oneNode = head; //从head头结点开始遍历嗷！
+
+            /* 下标i 如何与node结点建立起对应关系？
+            * 答：i=0时，oneNode=head，从head开始；
+            * 【递增时】 i=i+1(下标递增1)，
+            * 相应的 oneNode就变成 oneNode的下一个结点(递增的结点也是递增1个)
+            *
+            * 当 i=某个下标时，for循环里就取到那个结点(不断.next)，就对那个结点操作，就是这样对应的。
+            *  */
+            for( int i=0; i<this.size; i++,oneNode=oneNode.next ){
+                /* if( i==index ) 不要使用倒退的方法，这样取不到前一个结点！！要善于利用.next .next
+                 * 正确：i==(index-1)，画图，先连后断
+                 *  */
+                if( i==(index-1) ){
+                    /* 此时 第index-1个结点 是oneNode
+                     * oneNode的下一个结点是 oneNode.next，它将要成为newNode的next域！！
+                     *  */
+                    Node newNode_next = oneNode.next;
+                    //先连：让 newNode 指向 oneNode.next
+                    Node newNode = new Node( val, newNode_next );
+                    //oneNode的下一个结点指向 新结点
+                    oneNode.next = newNode;
+                    this.size++;
+                }
+            }
+        }
+
+    }
+
+
+    /* deleteAtIndex (index)：
+    * 如果索引 index 有效，则删除链表中的第 index 个节点。
+    *
+    *  */
+    public void deleteAtIndex(int index){
+        if( index<0 || index>size-1 ){ //下标最大可以取到 size-1
+            throw new IndexOutOfBoundsException("索引越界");
+        }else{
+
+            Node oneNode = head; //从头结点开始遍历嗷！
+            for( int i=0; i<size; i++, oneNode=oneNode.next ){
+                if( i==0 ){ //如果删除第一个元素
+                    //让head转移给下一位
+                    this.head = this.head.next;
+                    oneNode = null; //oneNode就是被删除的元素嗷！
+                }
+
+
+                //画图可知，索引要取到index-1
+                if( i==index-1 ){
+                    Node wantToDelete = oneNode.next; //将要删除的结点
+                    oneNode.next = wantToDelete.next; //让oneNode下一个结点 跨过wantToDelete 指向下一个
+                    wantToDelete = null; //删除wantToDelete
+                    size--;
+                }
+            }
+        }
+    }
 }
